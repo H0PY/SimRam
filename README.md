@@ -1,1 +1,2 @@
-# SimRam
+El simulador funciona ofreciéndole al usuario la capacidad de elegir la cantidad de RAM que quiere simular y esto se transforma en una matriz donde cada uno de sus elementos equivale a 500MB de RAM simulada, después se le da al usuario la capacidad de agregar programas a la RAM, los programas vienen con un valor de RAM predefinido.
+Para insertarse dentro de la matriz mediante un ciclo se lee cada uno de los elementos de la amtriz para verificar su disponibilidad, si la RAM tiene suficientes espacios libres para almacenar el programa, este se agrega de manera que cubra su uso de RAM dividido ente los bloques de la matriz.
