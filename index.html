@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title >Simulador de Memoria RAM</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <div class="logo">
+        <h1>SIMRAM</h1>
+        <span>Simulador visual de administración de memoria RAM</span>
+      </div>
+      <div class="config-panel">
+        <label for="ram-select">RAM:</label>
+        <select id="ram-select">
+          <option value="4096">4 GB</option>
+          <option value="8192">8 GB</option>
+          <option value="16384" selected>16 GB</option>
+          <option value="32768">32 GB</option>
+        </select>
+        <button id="btn-reset">↺ REINICIAR</button>
+      </div>
+    </header>
+
+
+    <section class="dashboard-grid">
+      <div class="metric-card">
+        <span class="label">RAM TOTAL</span>
+        <span class="val" id="lbl-total">16 GB</span>
+      </div>
+      <div class="metric-card">
+        <span class="label">UTILIZADA</span>
+        <span class="val" id="lbl-used">0 MB</span>
+      </div>
+      <div class="metric-card">
+        <span class="label">DISPONIBLE</span>
+        <span class="val" id="lbl-free">16 GB</span>
+      </div>
+      <div class="metric-card">
+        <span class="label">ESTADO</span>
+        <span class="badge" id="status-badge">NORMAL</span>
+      </div>
+      <div class="metric-card wide">
+        <span class="label">UTILIZACIÓN: <span id="lbl-percent">0%</span></span>
+        <div class="progress-bar-container">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+      </div>
+    </section>
+
+ 
+    <main class="main-layout">
+      <div class="column left-col">
+        <section class="card">
+          <h3>Mapa de memoria</h3>
+          <div id="ram-matrix-grid" class="matrix-grid"></div>
+        </section>
+
+        <section class="card">
+          <h3><span></span> Programas disponibles</h3>
+          <div class="controls-row">
+            <select id="app-select">
+              <option value="Sistema Operativo" data-size="3072">Sistema Operativo (3 GB)</option>
+              <option value="Navegador" data-size="3072">Navegador (3 GB)</option>
+              <option value="Videojuego" data-size="6144">Battlefield 6 (6 GB)</option>
+              <option value="Spotify" data-size="500">Spotify (500 MB)</option>
+              <option value="Discord" data-size="700">Discord (700 MB)</option>
+              <option value="Editor de texto" data-size="1024">Editor de texto (1 GB)</option>
+              <option value="Editor de video" data-size="4096">Editor de video (4 GB)</option>
+            </select>
+            <button id="btn-open">Agregar</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3> Programas en ejecución</h3>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>PROGRAMA</th>
+                <th>DIR. INICIAL</th>
+                <th>MEMORIA</th>
+                <th>ACCIÓN</th>
+              </tr>
+            </thead>
+            <tbody id="process-table-body"></tbody>
+          </table>
+        </section>
+      </div>
+
+      <div class="column right-col">
+        <section class="card">
+          <h3>Detalle del bloque</h3>
+          <div id="block-details" class="detail-empty">Haz clic en un bloque del mapa de memoria para ver su detalle.</div>
+          <div id="edit-form" class="edit-form hidden">
+            <div class="info-row"><span>Dirección:</span> <b id="detail-addr">-</b></div>
+            <div class="info-row"><span>Programa:</span> <b id="detail-owner">-</b></div>
+            <div class="input-group">
+              <label>Variable / Clave:</label>
+              <input type="text" id="input-key">
+            </div>
+            <div class="input-group">
+              <label>Valor:</label>
+              <input type="text" id="input-val">
+            </div>
+            <button id="btn-write">ESCRIBIR / MODIFICAR</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <h3>Historial de operaciones</h3>
+          <div id="history-log" class="history-log"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
